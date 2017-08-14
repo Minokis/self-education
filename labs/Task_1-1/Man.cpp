@@ -4,7 +4,7 @@
 //
 //  Created by Anna Korniychuk on 7/11/17.
 //
-//
+// Реализация класса Man
 
 #include <iostream>
 #include <cstring>
