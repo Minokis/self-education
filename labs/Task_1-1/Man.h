@@ -26,7 +26,6 @@ public:
     void SetBirthYear(const char*);
     void SetPay(const char*);
 private:
-  // сделаем создание имени более гибким - динамически
     char* name;
     int birth_year;
     float pay;

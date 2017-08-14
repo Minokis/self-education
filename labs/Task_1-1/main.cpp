@@ -11,13 +11,15 @@
 о сотруднике, подсчитывая средний оклад всех запрошенных сотрудников.
  */
 
-
+#include "stdafx.h"
 #include <fstream>
-#include "Man.h"
+#include "Man.cpp"
+using namespace std;
 
 const char filename[] = "dbase.txt";
 
 int main() {
+	setlocale(LC_ALL, "Russian");
     const int max_number_of_records = 10;
     Man men[max_number_of_records];
     char buf[buf_length + 1];
@@ -41,7 +43,26 @@ int main() {
       men[i].SetPay(buf);
       i++;
     }
+    int n_record = i, n_man = 0;
+    float mean_pay = 0;
 
+    while (true) {
+      cout << "Введите фамилию или слово end: ";
+      cin >> suggested_name;
+      if (0 == strcmp(suggested_name, "end"))
+        break;
+      bool not_found = true;
+      for (i = 0; i < n_record; ++i) {
+        if(men[i].CompareName(suggested_name)) {
+          men[i].Print();
+          n_man++;
+          mean_pay += men[i].GetPay();
+          not_found = false;
+          break;
+        }
+      }
+      if(not_found) cout << "Такого сотрудника нет" << endl;
+    }
+    if(n_man) cout << "Средний оклад: " << mean_pay / n_man << endl;
     return 0;
-
 }
