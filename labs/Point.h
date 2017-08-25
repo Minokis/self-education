@@ -7,11 +7,11 @@ class Point {
     Point(double _x = 0, double _y = 0):
       x(_x),
       y(_y)
-    { std::cout << "Constructor of Point is working\n"; }
+    {}
 
     void Show() const;
 
-  private:
+  public:
     double x, y;
 };
 

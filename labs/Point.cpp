@@ -3,5 +3,5 @@
 using namespace std;
 
 void Point::Show() const {
-  cout << "(" << x << ", " << y << ")\n";
+  cout << "(" << x << ", " << y << ")  ";
 }
