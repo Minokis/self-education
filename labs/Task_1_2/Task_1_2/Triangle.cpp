@@ -55,15 +55,4 @@ Triangle::Triangle(Point _v1, Point _v2, Point _v3, const char* ident):
     v3.Show();
     cout << endl;
   }
-  // Показать стороны и площадь
-  void Triangle::ShowSidesAndArea() const {
-    double p = (v1v2+v2v3+v1v3) / 2;
-    double s = sqrt(p* (p-v1v2)*(p-v2v3)*(p-v1v3));
-    cout << "------------------------" << endl;
-    cout << name << ": ";
-    cout.precision(4);
-    cout << "v1v2 = " << setw(5) << v1v2;
-    cout << ", v2v3 = " << setw(5) << v2v3;
-    cout << ", v1v3 = " << setw(5) << v1v3;
-    cout << ":\ts = " << s << endl;
-  }
+
