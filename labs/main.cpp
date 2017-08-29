@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include <iostream>
 #include "Point.h"
 #include "Triangle.h"
