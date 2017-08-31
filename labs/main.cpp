@@ -121,7 +121,12 @@ void Move(Triangle* p_tria[], int k) {
 }
 void FindMax(Triangle* p_tria[], int k) {
   cout << "======== Find the largest! ========" << endl;
-  // TODO
+  Triangle triaMax("triaMax");
+  triaMax = *p_tria[0];
+  for (int i = 1; i < k; ++i)
+    if (*p_tria[i] > triaMax)
+      triaMax = *p_tria[i]; // DANGER! нужно переопределить оператор присваивания 
+  cout << "The largest triangle is: " << triaMax.GetName() << endl;
   ExitBack();
 }
 void IsIncluded(Triangle* p_tria[], int k) {

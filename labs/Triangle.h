@@ -7,15 +7,21 @@ class Triangle {
   public:
     Triangle(Point, Point, Point, const char*);
     Triangle(const char*); // конструктор пустого треугольника
+    Triangle(const Triangle&); // конструктор копирования
     ~Triangle();
+
     Point Get_v1() const { return v1; }
     Point Get_v2() const { return v2; }
     Point Get_v3() const { return v3; }
     char* GetName() const { return name; }
     void Show() const;
     void Move(Point);
+    bool operator >(const Triangle&) const;
+    Triangle& operator =(const Triangle&);
+
   public:
     static int count;
+    
   private:
     char* objID;
     char* name;  // имя создается при создании треугольника, в конструкторе, с помощью счетчика
