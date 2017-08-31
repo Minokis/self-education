@@ -13,7 +13,7 @@ class Triangle {
     Point Get_v3() const { return v3; }
     char* GetName() const { return name; }
     void Show() const;
-    void ShowSidesAndArea() const;
+    void Move(Point);
   public:
     static int count;
   private:
