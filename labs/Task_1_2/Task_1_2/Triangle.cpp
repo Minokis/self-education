@@ -40,6 +40,24 @@ Triangle::Triangle(Point _v1, Point _v2, Point _v3, const char* ident):
 
   }
 
+  // Конструктор копирования
+  Triangle::Triangle(const Triangle& tria) :
+    v1(tria.v1),
+    v2(tria.v2),
+    v3(tria.v3) {
+      cout << "Copy constructor for: " << tria.objID << endl;
+
+      objID = new char[strlen(tria.objID) + strlen("(copy)") + 1];
+      strcpy(objID, tria.objID);
+      strcat(objID, "(copy)");
+
+      name = new char[strlen(tria.name) + 1];
+      strcpy(name, tria.name);
+      v1v2 = tria.v1v2;
+      v2v3 = tria.v2v3;
+      v1v3 = tria.v1v3;
+    }
+
   //Деструктор
   Triangle::~Triangle() {
     cout << "Destructor for: " << objID << endl;
@@ -56,3 +74,34 @@ Triangle::Triangle(Point _v1, Point _v2, Point _v3, const char* ident):
     cout << endl;
   }
 
+  // Переместить объект на величину dp.x, dp.y
+    void Triangle::Move(Point dp) {
+      v1 += dp;
+      v2 += dp;
+      v3 += dp;
+    }
+
+  // Сравнить площади
+    bool Triangle::operator >(const Triangle& tria) const {
+      double p = (v1v2+v2v3+v1v3) / 2;
+      double s = sqrt(p* (p-v1v2)*(p-v2v3)*(p-v1v3));
+      double p1 = (tria.v1v2+tria.v2v3+tria.v1v3) / 2;
+      double s1 = sqrt(p1* (p1-tria.v1v2)*(p1-tria.v2v3)*(p1-tria.v1v3));
+      if(s > s1)
+        return true;
+      else
+        return false;
+    }
+
+    // Присвоить значение объекта tria
+    Triangle& Triangle::operator =(const Triangle& tria) {
+      cout << "Assign operator: " << objID << " = " << tria.objID << endl;
+      if (&tria == this) return *this;
+      delete [] name;
+      name = new char[strlen(tria.name) + 1];
+      strcpy(name, tria.name);
+      v1v2 = tria.v1v2;
+      v2v3 = tria.v2v3;
+      v1v3 = tria.v1v3;
+      return *this;
+  }

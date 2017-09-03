@@ -83,19 +83,50 @@ void Show(Triangle* p_tria[], int k) {
   cout << "======== Triangles list! ========" << endl;
   for (int i = 0; i < k; ++i) {
     p_tria[i]->Show();
-    p_tria[i]->ShowSidesAndArea();
   }
   ExitBack();
 }
 
+double GetDouble() {
+  double value;
+  while(true) {
+    cin >> value;
+    if(cin.peek() == '\n')
+      break;
+    else {
+      cout << "Repeat. Real number is expected: " << endl;
+      cin.clear();
+      while (cin.get() != '\n') {};
+    }
+  }
+  return value;
+}
+
 void Move(Triangle* p_tria[], int k) {
   cout << "======== Move it! ========" << endl;
-  // TODO
+  cout << "Enter No of a triangle (from 1 to " << k << "): ";
+  int i = GetNumber(1, k) - 1;
+  p_tria[i]->Show();
+
+  Point dp;
+  cout << "\nEnter delta x: ";
+  dp.x = GetDouble();
+  cout << "\nEnter delta y: ";
+  dp.y = GetDouble();
+
+  p_tria[i]->Move(dp);
+  cout << "New dislocation:" << endl;
+  p_tria[i]->Show();
   ExitBack();
 }
 void FindMax(Triangle* p_tria[], int k) {
   cout << "======== Find the largest! ========" << endl;
-  // TODO
+  Triangle triaMax("triaMax");
+  triaMax = *p_tria[0];
+  for (int i = 1; i < k; ++i)
+    if (*p_tria[i] > triaMax)
+      triaMax = *p_tria[i]; // DANGER! нужно переопределить оператор присваивания
+  cout << "The largest triangle is: " << triaMax.GetName() << endl;
   ExitBack();
 }
 void IsIncluded(Triangle* p_tria[], int k) {
