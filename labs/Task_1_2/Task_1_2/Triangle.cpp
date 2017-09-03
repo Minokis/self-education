@@ -13,12 +13,14 @@ Triangle::Triangle(Point _v1, Point _v2, Point _v3, const char* ident):
   v3(_v3) {
     char buf[16]; // здесь мы создадим имя
     objID = new char[strlen(ident) + 1]; // strlen не включает \0
-    strcpy(objID, ident);
+	strcpy_s(objID, strlen(ident) + 1, ident);
 
     count++;
-    sprintf(buf, "Triangle %d", count); // переписывание в buf - создание имени
+    //sprintf(buf, "Triangle %d", count); // переписывание в buf - создание имени
+	sprintf_s(buf, 16, "Triangle %d", count);
     name = new char[strlen(buf) + 1];
-    strcpy(name, buf);
+    strcpy_s(name, strlen(buf) + 1, buf);
+
     v1v2 = sqrt((v1.x - v2.x) * (v1.x - v2.x) + (v1.y - v2.y) * (v1.y - v2.y));
     v2v3 = sqrt((v2.x - v3.x) * (v2.x - v3.x) + (v2.y - v3.y) * (v2.y - v3.y));
     v1v3 = sqrt((v1.x - v3.x) * (v1.x - v3.x) + (v1.y - v3.y) * (v1.y - v3.y));
