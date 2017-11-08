@@ -31,12 +31,13 @@ Triangle::Triangle(Point _v1, Point _v2, Point _v3, const char* ident):
   Triangle::Triangle(const char* ident) {
     char buf[16];
     objID = new char[strlen(ident) + 1];
-    strcpy(objID, ident);
+	name = new char[strlen(buf) + 1];
+	strcpy_s(objID, strlen(ident) + 1, ident);
 
     count++;
-    sprintf(buf, "Triangle %d", count); // переписывание в buf - создание имени
-    name = new char[strlen(buf) + 1];
-    strcpy(name, buf);
+    sprintf_s(buf, strlen(buf) + 1, "Triangle %d", count); // переписывание в buf - создание имени
+	
+    strcpy_s(name, strlen(buf) + 1, buf);
     v1v2 = v2v3 = v1v3 = 0;
     cout << "Constructor_2 for " << objID << " (" << name << ") "<< endl;
 
@@ -50,11 +51,10 @@ Triangle::Triangle(Point _v1, Point _v2, Point _v3, const char* ident):
       cout << "Copy constructor for: " << tria.objID << endl;
 
       objID = new char[strlen(tria.objID) + strlen("(copy)") + 1];
-      strcpy(objID, tria.objID);
-      strcat(objID, "(copy)");
-
+      strcpy_s(objID, strlen(objID) + 1, tria.objID);
+      strcat_s(objID, strlen(objID) + 1, "(copy)");
       name = new char[strlen(tria.name) + 1];
-      strcpy(name, tria.name);
+	  strcpy_s(name, strlen(tria.name) + 1, tria.name);
       v1v2 = tria.v1v2;
       v2v3 = tria.v2v3;
       v1v3 = tria.v1v3;
@@ -101,7 +101,7 @@ Triangle::Triangle(Point _v1, Point _v2, Point _v3, const char* ident):
       if (&tria == this) return *this;
       delete [] name;
       name = new char[strlen(tria.name) + 1];
-      strcpy(name, tria.name);
+	  strcpy_s(name, strlen(tria.name), tria.name);
       v1v2 = tria.v1v2;
       v2v3 = tria.v2v3;
       v1v3 = tria.v1v3;
