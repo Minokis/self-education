@@ -1,0 +1,35 @@
+Facts from learncpp I forgot:
+
+1. global scope operator ::
+
+Example:
+
+#include <iostream>
+int value(5); // global variable
+
+int main()
+{
+    int value = 7; // hides the global variable value
+    value++; // increments local value, not global value
+    ::value--; // decrements global value, not local value
+    ...
+    }
+
+2. Linkage of global variables
+
+static int g_x; // g_x is static, and can only be used within this file
+extern double g_y(9.8); // g_y is external, and can be used by other files
+
+
+global.cpp:
+int g_x(2); // external linkage by default
+
+main.cpp:
+extern int g_x; // forward declaration for g_x -- g_x can be used beyond this point in this file
+
+int main()
+{
+    std::cout << g_x; // should print 2
+
+    return 0;
+}

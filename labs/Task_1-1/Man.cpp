@@ -4,7 +4,7 @@
 //
 //  Created by Anna Korniychuk on 7/11/17.
 //
-//
+// Реализация класса Man
 
 #include <iostream>
 #include <cstring>
@@ -20,14 +20,14 @@ Man::~Man() {
     delete[] name;
 }
 
-bool Man::CompareName(const char* suggested_name) {
+bool Man::CompareName(const char* suggested_name) const {
     if (strstr(name, suggested_name) && name[strlen(suggested_name)] == ' ')
         return true;
     else
         return false;
 }
 
-void Man::Print() {
+void Man::Print() const {
     cout << name << birth_year << ' ' << pay << endl;
 }
 
