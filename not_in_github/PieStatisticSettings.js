@@ -54,7 +54,7 @@ render() {
                 onChange={this.props.handleShowChange}/> In progress/Failed
               </label>
             </div>
-						<button className="btn btn-default btn-block" type="submit"  onClick={this.props.handleFormSubmit}>Plot chart</button>
+						<button className="btn btn-default btn-block" type="submit"  onClick={this.props.handleClickPlotChart}>Plot chart</button>
           </form>
         </div>
 

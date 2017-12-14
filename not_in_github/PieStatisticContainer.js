@@ -1,12 +1,13 @@
 import React from 'react'
 import PieStatisticSettings from './../components/PieStatisticSettings';
 
-const showOptions = ['All tasks', 'Tasks in progress', 'In progress/Failed'];
-const plotOptions = ['Amounts', 'Weights'];
+
 
 export default class PieStatisticContainer extends React.Component {
   constructor(props) {
     super(props);
+    const showOptions = ['All tasks', 'Tasks in progress', 'In progress/Failed'];
+    const plotOptions = ['Amounts', 'Weights'];
     this.state = {
       plotBy: plotOptions[0],
       showInPieChart: showOptions[0],
@@ -22,7 +23,7 @@ export default class PieStatisticContainer extends React.Component {
     this.handlePlotChange = this.handlePlotChange.bind(this);
     this.handleShowChange = this.handleShowChange.bind(this);
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
-    this.handleSettingsSubmit = this.handleSettingsSubmit.bind(this);
+    this.handleClickPlotChart = this.handleClickPlotChart.bind(this);
   }
 
   componentDidMount = () => {
@@ -55,10 +56,39 @@ export default class PieStatisticContainer extends React.Component {
   }
 
 // заглушка
-  handleSettingsSubmit = event => {
+  handleClickPlotChart = event => {
     event.preventDefault();
-    console.log(this.state);
-    for (let item of this.state.tagsToShow) console.log(item);
+    let chartData = [];
+    for (let item of this.state.pieChartTags) {
+      if (this.state.tagsToShow.has(item.tag)) {
+        console.log(item.tag);
+        let pie = {};
+        pie.name = item.tag;
+        let end = this.state.plotBy.length - 1;
+        let key = this.state.plotBy.substring(0, end);
+        // TODO
+        if (this.state.showInPieChart === 'All tasks') {
+          let tagsKey = key.toLowerCase();
+          console.log("All tasks selected");
+        }
+        else if (this.state.showInPieChart === 'Tasks in progress') {
+          console.log("Tasks in progress selected");
+          //let tagsKey =
+        }
+        else if (this.state.showInPieChart === 'In progress/Failed') {
+          console.log("Complex graph is selected");
+          //let tagsKey =
+        }
+        else {
+          alert("Error processing settings: I don't understand options!");
+          //let tagsKey =
+        }
+        //pie.value = item[tagsKey];
+        chartData.push(pie);
+       }
+
+    }
+    console.log(chartData);
   }
 
   render() {
@@ -68,7 +98,7 @@ export default class PieStatisticContainer extends React.Component {
         handlePlotChange={this.handlePlotChange}
         handleShowChange={this.handleShowChange}
         toggleCheckbox={this.toggleCheckbox}
-        handleSettingsSubmit={this.handleSettingsSubmit}
+        handleClickPlotChart={this.handleClickPlotChart}
       />
     );
   }
