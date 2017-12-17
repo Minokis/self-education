@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Graphics from './Graphics';
 
 export default class PieStatisticForm extends React.Component {
 
@@ -12,6 +13,16 @@ render() {
 			   </div>
        );
    });
+
+   let pieChart;
+   if (this.props.dataForGraphics.length === 0) {
+     pieChart = <div className="row justify-content-center" style={{marginTop: "20%"}}>
+     <p>Nothing to show here. Tweak settings or go slay some to-dos!</p>
+     </div>
+   }
+   else {
+     pieChart = <Graphics data={this.props.dataForGraphics} />
+   }
 
   return(
     <div className="container" style={{marginTop: "20px"}}>
@@ -54,7 +65,8 @@ render() {
                 onChange={this.props.handleShowChange}/> In progress/Failed
               </label>
             </div>
-						<button className="btn btn-default btn-block" type="submit"  onClick={this.props.handleClickPlotChart}>Plot chart</button>
+						<button className="btn btn-default btn-block" onClick={this.props.handleClickPlotChart}>Plot chart</button>
+            {pieChart}
           </form>
         </div>
 

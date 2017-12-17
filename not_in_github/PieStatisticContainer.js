@@ -1,5 +1,6 @@
 import React from 'react'
 import PieStatisticSettings from './../components/PieStatisticSettings';
+import Graphics from './../components/Graphics';
 
 
 
@@ -12,12 +13,12 @@ export default class PieStatisticContainer extends React.Component {
       plotBy: plotOptions[0],
       showInPieChart: showOptions[0],
       pieChartTags: [
-  {tag: 'work', completedWeight: 30, failedWeight: 40, weight: 70, completedAmount: 3, failedAmount: 4, amount: 7},
-  {tag: 'study', completedWeight: 30, failedWeight: 40, weight: 70, completedAmount: 3, failedAmount: 4, amount: 7},
-  {tag: 'sport', completedWeight: 30, failedWeight: 40, weight: 70, completedAmount: 3, failedAmount: 4, amount: 7},
-  {tag: 'social', completedWeight: 30, failedWeight: 40, weight: 70, completedAmount: 3, failedAmount: 4, amount: 7},
-  {tag: 'other', completedWeight: 30, failedWeight: 40, weight: 70, completedAmount: 3, failedAmount: 4, amount: 7}],
-
+  {tag: 'work', completedWeight: 180, failedWeight: 10, weight: 200, completedAmount: 18, failedAmount: 1, amount: 20},
+  {tag: 'study', completedWeight: 100, failedWeight: 40, weight: 300, completedAmount: 10, failedAmount: 4, amount: 30},
+  {tag: 'sport', completedWeight: 30, failedWeight: 40, weight: 120, completedAmount: 3, failedAmount: 4, amount: 12},
+  {tag: 'social', completedWeight: 100, failedWeight: 0, weight: 150, completedAmount: 2, failedAmount: 0, amount: 3},
+  {tag: 'other', completedWeight: 30, failedWeight: 20, weight: 80, completedAmount: 3, failedAmount: 2, amount: 8}],
+    dataForGraphics: []
     };
 
     this.handlePlotChange = this.handlePlotChange.bind(this);
@@ -45,50 +46,55 @@ export default class PieStatisticContainer extends React.Component {
     });
   }
 
-   toggleCheckbox (event) {
+   toggleCheckbox(event) {
      let tag = event.target.name;
     if (this.state.tagsToShow.has(tag)) {
       this.state.tagsToShow.delete(tag);
     } else {
       this.state.tagsToShow.add(tag);
     }
-    console.log(this.state.tagsToShow);
   }
 
-// заглушка
-  handleClickPlotChart = event => {
-    event.preventDefault();
+  createDataForGraphics() {
     let chartData = [];
     for (let item of this.state.pieChartTags) {
       if (this.state.tagsToShow.has(item.tag)) {
-        console.log(item.tag);
-        let pie = {};
-        pie.name = item.tag;
-        let end = this.state.plotBy.length - 1;
-        let key = this.state.plotBy.substring(0, end);
+        let key = this.state.plotBy.substring(0, this.state.plotBy.length - 1);
         // TODO
         if (this.state.showInPieChart === 'All tasks') {
-          let tagsKey = key.toLowerCase();
-          console.log("All tasks selected");
+          let pie = {};
+          pie.name = item.tag;
+          pie.value = item[key.toLowerCase()];
+          chartData.push(pie);
         }
         else if (this.state.showInPieChart === 'Tasks in progress') {
-          console.log("Tasks in progress selected");
-          //let tagsKey =
+          let pie = {};
+          pie.name = item.tag;
+          pie.value = item[key.toLowerCase()] - item["completed" + key] - item["failed" + key];
+          chartData.push(pie);
         }
         else if (this.state.showInPieChart === 'In progress/Failed') {
-          console.log("Complex graph is selected");
-          //let tagsKey =
+          let pieInProgress = {};
+          let pieFailed = {};
+          pieInProgress.name = item.tag + " in progress";
+          pieFailed.name = item.tag + " failed";
+          pieInProgress.value = item[key.toLowerCase()] - item["completed" + key] - item["failed" + key];
+          pieFailed.value = item["failed" + key];
+          chartData.push(pieInProgress);
+          chartData.push(pieFailed);
         }
         else {
           alert("Error processing settings: I don't understand options!");
-          //let tagsKey =
         }
-        //pie.value = item[tagsKey];
-        chartData.push(pie);
        }
-
     }
-    console.log(chartData);
+    return chartData;
+  }
+
+  handleClickPlotChart (event) {
+    event.preventDefault();
+    let dataForGraphics = this.createDataForGraphics();
+    this.setState({dataForGraphics: dataForGraphics});
   }
 
   render() {

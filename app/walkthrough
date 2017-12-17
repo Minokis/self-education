@@ -1,0 +1,9 @@
+My app will be of type Strategy or Accessory.
+Tbricks Apps repository can be browsed at  http://apps.tbricks.com .
+You can clone the repository:
+
+
+$ cd /opt/tbricks
+$ git clone http://apps.tbricks.com/scm/tb/apps.git
+
+
