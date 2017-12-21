@@ -11,3 +11,6 @@ tomorrow i promise to write a page
 20/12
 Сдали
 Почитала паттерны
+
+21/12
+еще паттерны
