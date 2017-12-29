@@ -14,5 +14,15 @@ tomorrow i promise to write a page
 
 21/12
 еще паттерны
+
+23/12
+Read K's code,wiki, made some notes
+
+26/12 
+Preparing to Flexible methodologies
+
 27/12
 эссе, загрузила C++ материалы на книгу, зачет по гибким
+
+29/12
+C++
