@@ -1,4 +1,4 @@
-10.12
+﻿10.12
 Вношу то, что писала в ночь на среду 6.12
 tomorrow i promise to write a page
 
@@ -38,3 +38,6 @@ tracing
 
 05/01
 Wrote 2 functions in .bashrc at work
+
+06/01
+Vis Par + drive
