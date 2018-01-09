@@ -44,3 +44,6 @@ Vis Par + drive
 
 07/01
 Short day, thesis
+
+09/01
+Thesis all day
