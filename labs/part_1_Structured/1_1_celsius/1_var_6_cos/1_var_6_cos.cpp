@@ -1,16 +1,23 @@
-// 1_var_6_cos.cpp: определяет точку входа для консольного приложения.
+// 1_var_6_cos.cpp: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 //
 
 #include "stdafx.h"
-#include <stdio.h>
-#include <locale.h>
+#include <iostream>
 #include <math.h>
 
-
+using namespace std;
 int main()
 {
+	const double pi = 3.14159265;
 	setlocale(LC_ALL, "Russian");
-
-    return 0;
+	double alpha, result1, result2;
+	cout << "Р’РІРµРґРёС‚Рµ СѓРіРѕР» РІ РіСЂР°РґСѓСЃР°С…: ";
+	cin >> alpha;
+	double radians = alpha*pi/180;
+	cout << "\nРЈРіРѕР» РІ РіСЂР°РґСѓСЃР°С…: " << alpha;
+	result1 = cos(radians) + cos(2 * radians) + cos(6 * radians) + cos(7 * radians);
+	result2 = 4 * cos(radians / 2) * cos(5.0 / 2 * radians) * cos(4.0 * radians);
+	cout << "\nРџРѕ С„РѕСЂРјСѓР»Рµ 1: " << result1;
+	cout << "\nРџРѕ С„РѕСЂРјСѓР»Рµ 2: " << result2 << endl;
+  return 0;
 }
-
