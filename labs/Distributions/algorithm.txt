@@ -1,0 +1,30 @@
+Poisson
+
+Approach1
+One approach is to loop, and after each interval of X minutes, sample a random floating-point value between 0 and 1. If this number is less than F(X), then start an earthquake! X could even be a fractional value, so you could sample several times per minute, or even several times per second. This approach will probably work just fine, as long as your random number generator is uniform and offers enough numerical precision. However, if you intend to sample 60 times per second, with λ = 1/40, you’ll need at least 18 bits of precision from the random number generator, which the Standard C Runtime Library doesn’t always offer.
+
+Not for me - nano or microseconds are involved
+
+Approach2
+Another approach is to sidestep the whole sampling strategy, and simply write a function to determine the exact amount of time until the next earthquake. This function should return random numbers, but not the uniform kind of random number produced by most generators. We want to generate random numbers in a way that follows our exponential distribution.
+
+Donald Knuth describes a way to generate such values in §3.4.1 (D) of The Art of Computer Programming. Simply choose a random point on the y-axis between 0 and 1, distributed uniformly, and locate the corresponding time value on the x-axis.
+nextTime = -lnU/lambda, where U is a uniformic random value from 0 to 1
+
+
+Генераторы
+
+Один из подходов к генерированию случайных временных интервалов между событиями предполагает использование цикла, где на каждой итерации, скажем, раз в секунду, выбирается случайное число от 0 до 1 и сравнивается со значением F(x) - кумулятивной функции распределения. Если оно оказалось меньше F(x), запустить событие. Поскольку в нашем случае счет идет на микросекунды, этот способ вряд ли нам поможет.
+
+Другой подход - написать функцию, которая определяет время до следующего события. Или целый массив интервалов.
+
+Подход к генерированию интервалов с различными распределениями: создать некий базовый генератор
+
+unsigned long long BasicRandGenerator() {
+    unsigned long long randomVariable;
+    // some magic here
+    ...
+    return randomVariable;
+}
+
+И вывести остальные распределения из него.
