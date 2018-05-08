@@ -1,0 +1,48 @@
+Из НИР2:
+
+Заявки на запись создаются с помощью вызова TradesAddRequest. То, как именно будут распределены интервалы времени между заявками, должно определяться одним из алгоритмов, выбранных пользователем. Для первого прототипа приложения будем создавать регулярный поток обращений с периодическими выбросами - короткими участками времени, в течении которых нагрузка резко возрастает. Со временем можно будет расширить функционал, введя несколько распределений с параметрами для настройки. Учитывая конечную цель приложения - создание разнообразной параметризованной нагрузки - примем во внимание, что алгоритмов будет несколько. В таком случае целесообразно инкапсулировать эти алгоритмы с помощью паттерна Компоновщик. Необходимо также рассмотреть возмо
+жность создания смешанной нагрузки из заявок обоих типов.
+
+*Тип нагрузки:
+  a.	Регулярный поток;
+    i.	Параметр: интервал времени между трейдами τ;
+  b.	Равномерное распределение временных интервалов между трейдами;
+    i.	Параметры a и b;
+  c.	Пуассоновское распределение временных интервалов между трейдами;
+    i.	Параметр; интенсивность λ;
+  d.	Нормальное распределение временных интервалов между трейдами;
+    i.	Математическое ожидание μ;
+    ii.	Среднеквадратическое отклонение σ.
+
+
+When dealing with Tree-structured data, programmers often have to discriminate between a leaf-node and a branch. This makes code more complex, and therefore, more error prone. The solution is an interface that allows treating complex and primitive objects uniformly. In object-oriented programming, a composite is an object designed as a composition of one-or-more similar objects, all exhibiting similar functionality. This is known as a "has-a" relationship between objects.[4] The key concept is that you can manipulate a single instance of the object just as you would manipulate a group of them. The operations you can perform on all the composite objects often have a least common denominator relationship. For example, if defining a system to portray grouped shapes on a screen, it would be useful to define resizing a group of shapes to have the same effect (in some sense) as resizing a single shape.
+
+Composite should be used when clients ignore the difference between compositions of objects and individual objects.[1] If programmers find that they are using multiple objects in the same way, and often have nearly identical code to handle each of them, then composite is a good choice; it is less complex in this situation to treat primitives and composites as homogeneous.
+
+Кажется, мне это не подходит...
+
+Other sources:
+
+How to Generate Random Timings for a Poisson Process
+http://preshing.com/20111007/how-to-generate-random-timings-for-a-poisson-process/
+
+More sophisticated about time:
+http://www.fpga-dev.com/properly-time-distributed-stimuli/
+
+POISSON_SIMULATION
+Simulation of a Poisson Process
+https://people.sc.fsu.edu/~jburkardt/cpp_src/poisson_simulation/poisson_simulation.html
+
+A C++ Profiling Module for Multithreaded APIs
+http://preshing.com/20111203/a-c-profiling-module-for-multithreaded-apis/
+
+pattern
+
+http://cpp-reference.ru/patterns/structural-patterns/composite/
+
+пуассоновский поток клиентов
+https://toster.ru/q/263988
+
+
+хорошая статья о генераторах
+https://habrahabr.ru/post/263993/
