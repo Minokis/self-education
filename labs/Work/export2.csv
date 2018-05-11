@@ -1,0 +1,5 @@
+Created;Modified;Factor;Active #;Filled #;Price;Algo label;Status;Status text;Side;Instrument;Underlying instrument;Venue;MIC;Order reference;Order identifier;Order reference (venue);Service,,,,,,,,,,,,,,,,
+ 2018 20:02:16.924,1,173,0,8.45,,Working,,Buy,NOKSEK,,Internal,360T,Arg33naqm5pn,e4ab6422-5473-11e8-b380-c1ccf142e871,e4abe104-5473-11e8-93b0-d35876c89347,mifid_int_fix-tr
+ 2018 20:02:03.543,1,307,39,9.8,,Working,,Buy,NOKSEK,,Internal,360T,Arg33naqm5pm,dcb174c8-5473-11e8-b400-252ee4ffbdc1,dcb1f81c-5473-11e8-93b0-d35876c89347,mifid_int_fix-tr
+ 2018 20:01:47.009,1,0,17,9.6,,Completed,,Buy,NOKSEK,,Internal,360T,Arg33naqm5pl,d2d67b9c-5473-11e8-b380-c1ccf142e871,d2d7056c-5473-11e8-93b0-d35876c89347,mifid_int_fix-tr
+ 2018 20:02:03.544,1,0,56,9.5,,Completed,,Sell,NOKSEK,,Internal,360T,Arg33naqm5pk,c859b04e-5473-11e8-b400-252ee4ffbdc1,c85a315e-5473-11e8-93b0-d35876c89347,mifid_int_fix-tr
