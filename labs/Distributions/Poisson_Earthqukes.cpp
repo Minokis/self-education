@@ -16,30 +16,39 @@ http://preshing.com/20111007/how-to-generate-random-timings-for-a-poisson-proces
 
 #include <cmath>
 #include <stdlib.h>
-#include <stdio.h>
+#include <iostream>
 #include <time.h>
+#include <random> // for std::random_device and std::mt19937
 
-float nextTime(float rateParameter)
-{
-    return -(-1.0f/rateParameter) * log(1-static_cast<float>(rand())/(RAND_MAX+1));
+double simple_poisson(double rateParameter, double uniform) {
+  return -log(1-uniform)/rateParameter;
 }
 
-double check_poisson(float rateParameter, int iterations) {
+double check_poisson(double rateParameter, double uniform, int iterations) {
   double sum = 0;
   for(int i=0; i<iterations;++i) {
-    sum += static_cast<double>(nextTime(rateParameter));
+    sum += simple_poisson(rateParameter, uniform);
   }
   return sum/iterations;
 }
 
 int main() {
-  //using namespace std;
-  printf("RAND_MAX is %d\n", RAND_MAX);
-  srand(time(NULL));
-  float lam = 1.0f/40;
-  for(int i=0; i<5;i++)
-    printf("%lf\t", nextTime(lam));
-    //TODO: find a bug. Check shows that calculations are wrong. Or check function is written wrong.
-  printf("Check: %lf\n", check_poisson(lam, 1000) );
-  return 0;
+  std::random_device rd;
+  // Create a mersenne twister, seeded using the random device
+	std::mt19937 mersenne(rd());
+  // Create a reusable random number generator that generates uniform numbers between 0 and 1
+  std::uniform_real_distribution<double> distr(0.0, 1.0);
+  double lam = 1.0/40;
+	for (int count = 1; count <= 48; ++count)
+	{
+		std::cout << simple_poisson(lam, distr(mersenne))<< "\t";
+		// If we've printed 6 numbers, start a new row
+		if (count % 6 == 0)
+			std::cout << "\n";
+	}
+  for (int i = 0; i < 5; ++i)
+  {
+    std::cout << "Check "<< i << ": " << check_poisson(lam, distr(mersenne), 10000)<< std::endl;
+  }
+	return 0;
 }
