@@ -1,4 +1,4 @@
-# 1. import and parse the header
+
 # 2. find side, active volume and filled volume, price
 # 3. count BOV, SOV, BTV, STV
 # 4. show table (identical to the one in the Front End)
@@ -6,32 +6,31 @@ import csv
 import sys
 
 
-#1
+# check arguments and inform user
 if len(sys.argv) not in (2,3):
-    print("Wrong arguments. Specify filename. Add rate, if applicable.")
+    print("Wrong arguments. Specify filename. Add rate, if you want to multiply values to something.")
     exit(0)
-
-filename = str(sys.argv[1])
 if len(sys.argv) == 3:
     print('I see you want some rate to use. OK!')
     rate = float(sys.argv[2])
 else:
     rate = 1
+filename = str(sys.argv[1])
 
+# open csv and get the header
 with open(filename, 'r', newline='') as fn:
     reader = csv.reader(fn, delimiter=';')
     header = reader.__next__()
-    print(header)
 
-    #2
+    # find columns which we need for calculations
     columns = {}
-    columnKeys = ['Active #', 'Filled #', 'Price', 'Side', 'Factor', 'Instrument']
-    for key in columnKeys:
-        for i in range(len(header)):
-            if header[i] == key:
-                columns[key] = i
+    columnKeys = set(['Active #', 'Filled #', 'Price', 'Side', 'Factor'])
+    for i in range(len(header)):
+        if header[i] in columnKeys:
+            columns[str(header[i])] = i
     if len(columns) != len(columnKeys):
-        print("Warning! Some values are absent.")
+        print("Warning! Some values are absent. I need {0}. I got {1}.\nI need another file.".format(columnKeys, columns.keys()))
+        exit(0)
 
     buyOrderVolume = 0
     buyOrderValue = 0
@@ -47,12 +46,12 @@ with open(filename, 'r', newline='') as fn:
 
     for row in reader:
         try:
-            if row[columns['Side']] == 'Buy' and row[columns['Price']] != '':
+            if row[columns['Side']] == 'Buy' and row[columns['Price']] != '' and row[columns['Price']] != '0':
                 buyOrderVolume += float(row[columns['Active #']])
                 buyOrderValue += rate * float(row[columns['Active #']])*float(row[columns['Price']])* float(row[columns['Factor']])
                 buyTradeVolume += float(row[columns['Filled #']])
                 buyTradeValue += rate * float(row[columns['Filled #']])*float(row[columns['Price']])*float(row[columns['Factor']])
-            if row[columns['Side']] == 'Sell' and row[columns['Price']] != '':
+            if row[columns['Side']] == 'Sell' and row[columns['Price']] != '' and row[columns['Price']] != '0':
                 sellOrderVolume += float(row[columns['Active #']])
                 sellOrderValue += rate * float(row[columns['Active #']]) * float(row[columns['Price']]) * float(row[columns['Factor']])
                 sellTradeVolume += float(row[columns['Filled #']])
