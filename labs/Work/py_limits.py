@@ -46,21 +46,32 @@ with open(filename, 'r', newline='') as fn:
 
     for row in reader:
         try:
+            if not row[columns['Factor']]:
+                factor = 1
+            else:
+                factor = float(row[columns['Factor']])
+
             if row[columns['Side']] == 'Buy' and row[columns['Price']] != '' and row[columns['Price']] != '0':
                 buyOrderVolume += float(row[columns['Active #']])
-                buyOrderValue += rate * float(row[columns['Active #']])*float(row[columns['Price']])* float(row[columns['Factor']])
                 buyTradeVolume += float(row[columns['Filled #']])
-                buyTradeValue += rate * float(row[columns['Filled #']])*float(row[columns['Price']])*float(row[columns['Factor']])
+                buyOrderValue += rate * float(row[columns['Active #']]) * float(row[columns['Price']]) * factor
+                buyTradeValue += rate * float(row[columns['Filled #']]) * float(row[columns['Price']]) * factor
+                # print("buyOrderVolume = {}\nbuyOrderValue = {}\nbuyTradeVolume = {}\nbuyTradeValue = {}\n".format(
+                #     buyOrderVolume, \
+                #     buyOrderValue, buyTradeVolume, buyTradeValue))
             if row[columns['Side']] == 'Sell' and row[columns['Price']] != '' and row[columns['Price']] != '0':
                 sellOrderVolume += float(row[columns['Active #']])
-                sellOrderValue += rate * float(row[columns['Active #']]) * float(row[columns['Price']]) * float(row[columns['Factor']])
+                sellOrderValue += rate * float(row[columns['Active #']]) * float(row[columns['Price']]) * factor
                 sellTradeVolume += float(row[columns['Filled #']])
-                sellTradeValue += rate * float(row[columns['Filled #']]) * float(row[columns['Price']]) * float(row[columns['Factor']])
+                sellTradeValue += rate * float(row[columns['Filled #']]) * float(row[columns['Price']]) * factor
+                # print("sellOrderVolume = {}\nsellOrderValue = {}\nsellTradeVolume = {}\nsellTradeValue = {}\n".format(
+                #     sellOrderVolume, \
+                #     sellOrderValue, sellTradeVolume, sellTradeValue))
         except Exception as err:
             print(err)
             print(row)
             exit(0)
-
+    # print('//////////////////////////////////////////////////////////////////////')
     print("buyOrderVolume = {}\nbuyOrderValue = {}\nbuyTradeVolume = {}\nbuyTradeValue = {}\n".format(buyOrderVolume,\
         buyOrderValue, buyTradeVolume,buyTradeValue))
     print("sellOrderVolume = {}\nsellOrderValue = {}\nsellTradeVolume = {}\nsellTradeValue = {}\n".format(sellOrderVolume,\
