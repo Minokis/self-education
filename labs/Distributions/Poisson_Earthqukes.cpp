@@ -24,14 +24,6 @@ double simple_poisson(double rateParameter, double uniform) {
   return -log(1-uniform)/rateParameter;
 }
 
-double check_poisson(double rateParameter, double uniform, int iterations) {
-  double sum = 0;
-  for(int i=0; i<iterations;++i) {
-    sum += simple_poisson(rateParameter, uniform);
-  }
-  return sum/iterations;
-}
-
 int main() {
   std::random_device rd;
   // Create a mersenne twister, seeded using the random device
@@ -46,9 +38,12 @@ int main() {
 		if (count % 6 == 0)
 			std::cout << "\n";
 	}
-  for (int i = 0; i < 5; ++i)
-  {
-    std::cout << "Check "<< i << ": " << check_poisson(lam, distr(mersenne), 10000)<< std::endl;
+
+  int iterations = 10000;
+  double sum = 0;
+  for(int i=0; i<iterations;++i) {
+    sum += simple_poisson(lam, distr(mersenne));
   }
+  std::cout << "Check: " << sum/iterations << std::endl;
 	return 0;
 }
