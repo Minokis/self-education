@@ -1,5 +1,83 @@
-Created;Modified;Factor;Active #;Filled #;Price;Algo label;Status;Status text;Side;Instrument;Underlying instrument;Venue;MIC;Order reference;Order identifier;Order reference (venue);Service,,,,,,,,,,,,,,,,
- 2018 20:02:16.924,1,173,0,8.45,,Working,,Buy,NOKSEK,,Internal,360T,Arg33naqm5pn,e4ab6422-5473-11e8-b380-c1ccf142e871,e4abe104-5473-11e8-93b0-d35876c89347,mifid_int_fix-tr
- 2018 20:02:03.543,1,307,39,9.8,,Working,,Buy,NOKSEK,,Internal,360T,Arg33naqm5pm,dcb174c8-5473-11e8-b400-252ee4ffbdc1,dcb1f81c-5473-11e8-93b0-d35876c89347,mifid_int_fix-tr
- 2018 20:01:47.009,1,0,17,9.6,,Completed,,Buy,NOKSEK,,Internal,360T,Arg33naqm5pl,d2d67b9c-5473-11e8-b380-c1ccf142e871,d2d7056c-5473-11e8-93b0-d35876c89347,mifid_int_fix-tr
- 2018 20:02:03.544,1,0,56,9.5,,Completed,,Sell,NOKSEK,,Internal,360T,Arg33naqm5pk,c859b04e-5473-11e8-b400-252ee4ffbdc1,c85a315e-5473-11e8-93b0-d35876c89347,mifid_int_fix-tr
+Created;Modified;Side;Instrument;Factor;Status;Underlying instrument;Factor;Active #;Filled #;Price;Portfolio;Status text;Client;Venue;MIC;Instrument identifier
+Tuesday, May 15, 2018 13:24:34.342;Tuesday, May 15, 2018 13:24:38.169;Buy;SEK/USD I;;Completed;;;0;155;1.99999;Portfolio P;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:35.641;Tuesday, May 15, 2018 13:24:38.164;Buy;SEK/USD I;;Completed;;;0;129;2.00001;korniychuk;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:35.242;Tuesday, May 15, 2018 13:24:37.772;Buy;SEK/USD I;;Completed;;;0;124;2.00001;daria_emil;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:39.442;Tuesday, May 15, 2018 13:24:39.475;Sell;SEK/USD I;;Completed;;;0;100;2.00001;Principial;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:44.647;Tuesday, May 15, 2018 13:24:46.478;Sell;SEK/USD I;;Completed;;;0;100;3.60001;Principial;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:45.047;Tuesday, May 15, 2018 13:24:45.774;Buy;SEK/USD I;;Completed;;;0;100;3.59997;New portfolio;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:32.841;Tuesday, May 15, 2018 13:24:33.566;Sell;SEK/USD I;;Completed;;;0;97;1.99999;geetesh;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:36.442;Tuesday, May 15, 2018 13:24:44.878;Sell;SEK/USD I;;Completed;;;0;97;2.00004;ymz;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:44.847;Tuesday, May 15, 2018 13:24:44.890;Buy;SEK/USD I;;Completed;;;0;92;3.60003;korniychuk;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:46.147;Tuesday, May 15, 2018 13:24:46.170;Buy;SEK/USD I;;Completed;;;0;91;3.59998;geetesh;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:38.641;Tuesday, May 15, 2018 13:24:39.472;Buy;SEK/USD I;;Completed;;;0;89;2.00003;geetesh;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:32.641;Tuesday, May 15, 2018 13:24:34.363;Sell;SEK/USD I;;Completed;;;0;88;1.99999;INTERNAL-1-TRADING;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:37.742;Tuesday, May 15, 2018 13:24:37.775;Sell;SEK/USD I;;Completed;;;0;86;1.99999;Principial;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:33.042;Tuesday, May 15, 2018 13:24:46.480;Buy;SEK/USD I;;Completed;;;0;85;3.60001;conm;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:33.342;Tuesday, May 15, 2018 13:24:45.074;Sell;SEK/USD I;;Completed;;;0;83;3.59995;New portfolio 1;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:51.147;Tuesday, May 15, 2018 13:24:51.271;Sell;SEK/USD I;;Completed;;;0;83;3.59997;alekchi_alias;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:34.742;Tuesday, May 15, 2018 13:24:35.269;Sell;SEK/USD I;;Completed;;;0;81;2.00;Portfolio P;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:45.847;Tuesday, May 15, 2018 13:24:46.377;Sell;SEK/USD I;;Completed;;;0;81;3.59997;New portfolio;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:48.647;Tuesday, May 15, 2018 13:24:51.172;Buy;SEK/USD I;;Completed;;;0;81;3.59998;ymz_random;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:49.847;Tuesday, May 15, 2018 13:24:53.676;Sell;SEK/USD I;;Completed;;;0;81;3.60004;client_test_1;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:33.542;Tuesday, May 15, 2018 13:24:34.164;Buy;SEK/USD I;;Completed;;;0;77;1.99999;apple;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:38.142;Tuesday, May 15, 2018 13:24:38.171;Sell;SEK/USD I;;Completed;;;0;75;1.99998;daria;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:38.941;Tuesday, May 15, 2018 13:24:44.471;Buy;SEK/USD I;;Completed;;;0;75;3.60005;conm;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:45.747;Tuesday, May 15, 2018 13:24:46.168;Sell;SEK/USD I;;Completed;;;0;74;3.59997;New portfolio;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:35.142;Tuesday, May 15, 2018 13:24:35.161;Sell;SEK/USD I;;Completed;;;0;73;1.99999;OTUA;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:49.047;Tuesday, May 15, 2018 13:24:49.079;Buy;SEK/USD I;;Completed;;;0;73;3.60005;Principial;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:36.542;Tuesday, May 15, 2018 13:24:38.670;Sell;SEK/USD I;;Completed;;;0;70;2.00002;valeriag_fm_fx;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:48.747;Tuesday, May 15, 2018 13:24:49.076;Sell;SEK/USD I;;Completed;;;0;68;3.60001;alekchi_alias;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:50.447;Tuesday, May 15, 2018 13:24:50.470;Sell;SEK/USD I;;Completed;;;0;67;3.59998;OTUA;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:48.147;Tuesday, May 15, 2018 13:24:50.467;Buy;SEK/USD I;;Completed;;;0;65;3.59999;New portfolio;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:49.747;Tuesday, May 15, 2018 13:24:50.264;Sell;SEK/USD I;;Completed;;;0;64;3.60;INTERNAL-1-TRADING;Canceled;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:49.246;Tuesday, May 15, 2018 13:24:49.773;Buy;SEK/USD I;;Completed;;;0;63;3.60003;OTUA;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:36.941;Tuesday, May 15, 2018 13:24:36.964;Buy;SEK/USD I;;Completed;;;0;62;2.00005;apple;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:45.346;Tuesday, May 15, 2018 13:24:45.367;Buy;SEK/USD I;;Completed;;;0;62;3.60003;alekchi_alias;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:47.147;Tuesday, May 15, 2018 13:24:48.266;Buy;SEK/USD I;;Completed;;;0;58;3.59996;Portfolio P;Canceled;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:47.247;Tuesday, May 15, 2018 13:24:47.269;Sell;SEK/USD I;;Completed;;;0;58;3.59996;INTERNAL-1-TRADING;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:34.842;Tuesday, May 15, 2018 13:24:47.084;Buy;SEK/USD I;;Completed;;;0;56;3.60004;Unassigned;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:45.147;Tuesday, May 15, 2018 13:24:47.083;Sell;SEK/USD I;;Completed;;;0;56;3.60001;Principial;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:50.547;Tuesday, May 15, 2018 13:24:50.564;Buy;SEK/USD I;;Completed;;;0;53;3.60004;client_test_1;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:48.847;Tuesday, May 15, 2018 13:24:50.972;Sell;SEK/USD I;;Completed;;;0;51;3.59997;conm;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:49.547;Tuesday, May 15, 2018 13:24:49.779;Buy;SEK/USD I;;Completed;;;0;51;3.60001;client_test_1;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:49.147;Tuesday, May 15, 2018 13:24:49.270;Sell;SEK/USD I;;Completed;;;0;50;3.60;RK;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:33.442;Tuesday, May 15, 2018 13:24:46.571;Buy;SEK/USD I;;Completed;;;0;47;3.60001;New portfolio;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:48.347;Tuesday, May 15, 2018 13:24:48.775;Buy;SEK/USD I;;Completed;;;0;46;3.60002;client_test_1;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:34.942;Tuesday, May 15, 2018 13:24:34.972;Buy;SEK/USD I;;Completed;;;0;43;2.00004;INTERNAL-1-TRADING;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:45.547;Tuesday, May 15, 2018 13:24:45.578;Sell;SEK/USD I;;Completed;;;0;39;3.59995;INTERNAL-1-TRADING;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:35.842;Tuesday, May 15, 2018 13:24:35.868;Sell;SEK/USD I;;Completed;;;0;38;1.99997;RK;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:46.847;Tuesday, May 15, 2018 13:24:47.965;Sell;SEK/USD I;;Completed;;;0;38;3.60002;ymz;Canceled;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:45.647;Tuesday, May 15, 2018 13:24:48.374;Sell;SEK/USD I;;Completed;;;0;37;3.60002;ymz;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:36.141;Tuesday, May 15, 2018 13:24:36.155;Buy;SEK/USD I;;Completed;;;0;32;2.00006;geetesh;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:51.247;Tuesday, May 15, 2018 13:24:57.363;Buy;SEK/USD I;;Completed;;;0;31;3.59999;MM;Canceled;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:53.647;Tuesday, May 15, 2018 13:24:53.680;Buy;SEK/USD I;;Completed;;;0;30;3.60005;valeriag_fm_fx;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:34.042;Tuesday, May 15, 2018 13:24:46.379;Buy;SEK/USD I;;Completed;;;0;28;3.60;korniychuk;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:35.941;Tuesday, May 15, 2018 13:24:44.886;Sell;SEK/USD I;;Completed;;;0;28;2.00006;daria_emil;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:32.246;Tuesday, May 15, 2018 13:24:32.373;Sell;SEK/USD I;;Completed;;;0;25;2.00003;conm;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:32.342;Tuesday, May 15, 2018 13:24:32.458;Buy;SEK/USD I;;Completed;;;0;25;2.00005;daria_emil;Canceled;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:32.941;Tuesday, May 15, 2018 13:24:32.967;Buy;SEK/USD I;;Completed;;;0;24;1.99999;Unassigned;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:37.542;Tuesday, May 15, 2018 13:24:37.565;Sell;SEK/USD I;;Completed;;;0;23;1.99997;Portfolio P;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:46.047;Tuesday, May 15, 2018 13:24:46.473;Sell;SEK/USD I;;Completed;;;0;22;3.59999;MM;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:59.647;Tuesday, May 15, 2018 13:25:00.057;Sell;SEK/USD I;;Working;;;13;21;3.59995;korniychuk;Modify: Flow: Gross value - Post trade (12091.21 USD) for orders exceeds limit (12000.00 USD) (Client=R. Daneel Olivaw, Owner=korniychuk);R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:50.847;Tuesday, May 15, 2018 13:24:59.066;Sell;SEK/USD I;;Completed;;;0;21;3.60002;conm;Canceled;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:54.047;Tuesday, May 15, 2018 13:24:59.674;Buy;SEK/USD I;;Completed;;;0;21;3.59997;korniychuk;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:32.741;Tuesday, May 15, 2018 13:24:35.565;Sell;SEK/USD I;;Completed;;;0;20;1.99998;client_test_1;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:37.942;Tuesday, May 15, 2018 13:24:46.766;Buy;SEK/USD I;;Completed;;;0;19;2.00001;OTUA;Canceled;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:49.347;Tuesday, May 15, 2018 13:24:53.970;Buy;SEK/USD I;;Completed;;;0;19;3.60003;korniychuk;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:46.647;Tuesday, May 15, 2018 13:24:47.079;Sell;SEK/USD I;;Completed;;;0;17;3.59995;RK;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:35.341;Tuesday, May 15, 2018 13:24:35.370;Sell;SEK/USD I;;Completed;;;0;15;2.00;Principial;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:37.141;Tuesday, May 15, 2018 13:24:44.883;Sell;SEK/USD I;;Completed;;;0;15;2.00005;geetesh;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:36.642;Tuesday, May 15, 2018 13:24:44.889;Sell;SEK/USD I;;Completed;;;0;14;2.00008;New portfolio;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:32.541;Tuesday, May 15, 2018 13:24:32.868;Buy;SEK/USD I;;Completed;;;0;13;1.99999;New portfolio 1;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:33.142;Tuesday, May 15, 2018 13:24:33.171;Buy;SEK/USD I;;Completed;;;0;13;2.00004;apple;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:39.341;Tuesday, May 15, 2018 13:24:39.367;Buy;SEK/USD I;;Completed;;;0;13;2.00005;alekchi_alias;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:45.247;Tuesday, May 15, 2018 13:24:46.272;Buy;SEK/USD I;;Completed;;;0;9;3.59996;New portfolio 1;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:46.247;Tuesday, May 15, 2018 13:24:46.269;Sell;SEK/USD I;;Completed;;;0;9;3.59995;apple;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:34.642;Tuesday, May 15, 2018 13:24:34.969;Sell;SEK/USD I;;Completed;;;0;8;2.00;ymz_random;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:47.847;Tuesday, May 15, 2018 13:24:48.779;Buy;SEK/USD I;;Completed;;;0;8;3.60002;geetesh;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:33.942;Tuesday, May 15, 2018 13:24:33.960;Sell;SEK/USD I;;Completed;;;0;7;1.99994;alekchi;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:44.147;Tuesday, May 15, 2018 13:24:44.164;Buy;SEK/USD I;;Completed;;;0;6;3.59996;apple;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:45.447;Tuesday, May 15, 2018 13:24:45.576;Buy;SEK/USD I;;Completed;;;0;6;3.59999;New portfolio;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:36.242;Tuesday, May 15, 2018 13:24:36.266;Buy;SEK/USD I;;Completed;;;0;4;2.00004;valeriag;;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:38.341;Tuesday, May 15, 2018 13:24:50.664;Buy;SEK/USD I;;Completed;;;0;2;3.59999;OTUA;Canceled;R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d
+Tuesday, May 15, 2018 13:24:59.847;Tuesday, May 15, 2018 13:25:01.056;Sell;SEK/USD I;;Working;;;71;0;3.60001;client_test_1;Modify: Flow: Gross value - Post trade (12091.21 USD) for orders exceeds limit (12000.00 USD) (Client=R. Daneel Olivaw, Owner=korniychuk);R. Daneel Olivaw;Internal;360T;5ef8b6fc-7208-11e7-945d-0c3e99245e0d

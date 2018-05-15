@@ -43,7 +43,7 @@ with open(filename, 'r', newline='') as fn:
     sellTradeValue = 0
 
     #3
-
+    count = 0
     for row in reader:
         try:
             if not row[columns['Factor']]:
@@ -61,17 +61,19 @@ with open(filename, 'r', newline='') as fn:
                 #     buyOrderValue, buyTradeVolume, buyTradeValue))
             if row[columns['Side']] == 'Sell' and row[columns['Price']] != '' and row[columns['Price']] != '0':
                 sellOrderVolume += float(row[columns['Active #']])
-                sellOrderValue += rate * float(row[columns['Active #']]) * float(row[columns['Price']]) * factor
+                sellOrderValue += rate * float(row[columns['Active #']]) * float(row[columns['Price']])* factor
                 sellTradeVolume += float(row[columns['Filled #']])
-                sellTradeValue += rate * float(row[columns['Filled #']]) * float(row[columns['Price']]) * factor
+                sellTradeValue += rate * float(row[columns['Filled #']]) * float(row[columns['Price']])* factor
                 # print("sellOrderVolume = {}\nsellOrderValue = {}\nsellTradeVolume = {}\nsellTradeValue = {}\n".format(
                 #     sellOrderVolume, \
                 #     sellOrderValue, sellTradeVolume, sellTradeValue))
+            count += 1
         except Exception as err:
             print(err)
             print(row)
             exit(0)
     # print('//////////////////////////////////////////////////////////////////////')
+    print("Rows: {}".format(count))
     print("buyOrderVolume = {}\nbuyOrderValue = {}\nbuyTradeVolume = {}\nbuyTradeValue = {}\n".format(buyOrderVolume,\
         buyOrderValue, buyTradeVolume,buyTradeValue))
     print("sellOrderVolume = {}\nsellOrderValue = {}\nsellTradeVolume = {}\nsellTradeValue = {}\n".format(sellOrderVolume,\
@@ -86,5 +88,5 @@ print("{0:>15.0f}{1:>15.0f}{2:>15.0f}{3:>15.0f}{4:>15.0f}{5:>15.0f}{6:>15.0f}{7:
     max(buyOrderVolume+buyTradeVolume-sellTradeVolume, sellOrderVolume+sellTradeVolume-buyTradeVolume), \
     buyOrderValue + buyTradeValue + sellOrderValue + sellTradeValue, \
     buyOrderVolume+ buyTradeVolume+ sellOrderVolume+ sellTradeVolume))
-
+print("Gross Order Volume = {}".format(buyOrderValue+sellOrderValue))
 
