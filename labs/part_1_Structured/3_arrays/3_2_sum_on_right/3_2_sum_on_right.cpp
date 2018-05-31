@@ -18,12 +18,18 @@ int main()
 	for (int i = 0; i < n; ++i) {
 		cin >> a[i];
 	}
+
 	double sum = 0;
-	for (int i = n - 1; i > 0 && a[i] >= 0; i--) {
+	bool is_negative = false;
+	for (int i = n - 1; i > 0; i--) {
+		if (a[i] < 0) {
+			break; is_negative = true;
+		}
 		sum += a[i];
 	}
 	delete[] a;
-	cout << "\nSum: " << sum << endl;
+	if(is_negative)	cout << "\nSum: " << sum << endl;
+	else cout << "\nNo negative numbers!" << endl;
     return 0;
 }
 
