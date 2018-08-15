@@ -13,7 +13,7 @@ Node * first (int d);            // создание первого элемен
 void add (Node **pend, int d);   // добавление элемента в конец списка
 Node * find(Node * const pbeg, int key);
 Node * insert(Node * const pbeg, Node **pend, int key, int d); // вставить после key
-// delete
+bool remove (Node ** pbeg, Node **pend, int key);
 
 
 int main() {
@@ -22,10 +22,11 @@ int main() {
   Node *pbeg = first(1);
   Node *pend = pbeg;
   // Добавим элементы 2, 3, 4, 5
-  for (int i = 2; i < 6; i++) add(&pend, i);
-  // Вставим элемент 350 после 3
+  for (int i = 2; i < 6; i++)add(&pend, i);
+  // Вставим элемент 350 после элемента 3
   insert (pbeg, &pend, 3, 350);
-  // TODO удалим элемент 4
+  // Удалим элемент 4
+  if(!remove(&pbeg, &pend, 4)) std::cout << "не найден";
 
   // Распечатаем
   Node *pv = pbeg;
@@ -34,8 +35,12 @@ int main() {
     pv = pv->next;
   }
   std::cout << '\n';
+  delete pbeg;
+  delete pend;
+  delete pv;
   return 0;
 }
+
 // Создание первого элемента - формирование списка
 Node * first (int d) {
   Node *pv = new Node;
@@ -53,11 +58,11 @@ void add (Node **pend, int d) {
   *pend = pv;
 }
 // Поиск элемента по ключу
-Node * find(Node * const pbeg, int key) {
+Node * find(Node * const pbeg, int d) {
   Node *pv = pbeg;
   while(pv) {
-    if (pv->d == key) break;
-    pv-> next = pv;
+    if (pv->d == d) break;
+    pv = pv-> next;
   }
   return pv; // если не найдет, функция вернет 0
 }
@@ -66,17 +71,36 @@ Node * insert(Node * const pbeg, Node **pend, int key, int d) {
   if(Node *pkey = find(pbeg, key)) {
     Node *pv = new Node;
     pv->d = d;
-    // установление связи нового узла с последующим:
+    // 1 установление связи нового узла с последующим:
     pv->next = pkey->next;
-    // установление связи нового узла с предыдущим:
+    // 2 установление связи нового узла с предыдущим:
     pv->prev = pkey;
-    // установление связи предыдущего узла с новым:
+    // 3 установление связи предыдущего узла с новым:
     pkey->next = pv;
-    // установление связи последующего узла с новым
+    // 4 установление связи последующего узла с новым
     if (pkey != *pend) (pv->next)->prev = pv;
     //обновление указателя на конец списка, если узел вставлен в конец
     else *pend = pv;
     return pv;
   }
   return 0;
+}
+
+// Удаление элемента
+bool remove (Node ** pbeg, Node **pend, int key) {
+  if(Node *pkey = find(*pbeg, key)) {
+    if(pkey == *pbeg) {
+      *pbeg = (*pbeg)->next;
+      (*pbeg)->prev = 0; }
+    else if (pkey == *pend) {
+      *pend = (*pend)->prev;
+      (*pend)->next = 0; }
+    else {
+      (pkey->prev)->next = pkey->next;
+      (pkey->next)->prev = pkey->prev;
+    }
+    delete pkey;
+    return true;
+  }
+  return false;
 }
