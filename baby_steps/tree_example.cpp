@@ -14,13 +14,17 @@ void del(Node *root, int d);
 
 int main() {
   const int n = 16;
-  int b[n] = {10, 25, 20, 6, 21, 8, 1, 30, 22, 23, 24, 56, 44, 3, 4,9 };
+  int b[n] = {10, 25, 20, 19, 6, 21, 8, 1, 30, 22, 23, 24, 56, 44, 3, 4 };
   Node *root = first(b[0]);
   for (int i=1; i < n; i++)search_insert(root, b[i]);
   print_tree(root, 0);
-  //del(root, 10);
-  del(root, 20);
-  //del(root, 23);
+
+  del(root, 10); // check deleting of the root
+  del(root, 8);
+  del(root, 20);   // node with only right subtree
+  del(root, 44);   // node-leaf
+  del(root, 56); // node with only left subtrees
+  del(root, 20); // node with both subtrees
 
   print_tree(root, 0);
   return 0;
@@ -75,31 +79,57 @@ void del(Node *root, int d) {
     else                { prev = pv; pv = pv->right;}
   }
   if(!found) { std::cout << "Node is not found.\n"; return; }
-  // TODO: finish translation, get rid of dummies
-  // на выходе имеем prev - родителя искомого удаляемого, и удаляемое pv.
-  // если pv == root,  то prev = 0x0.
+  // Now we have pv to delete and its parent prev.
+  // If pv == root,  then prev = 0x0.
 
-  // Проверка
+  // Check our findings
   std::cout << "pv = " << pv->d << std::endl;
-  prev ? std::cout << "prev = " << prev->d << std::endl : std::cout << "prev = " << prev << std::endl;
+  prev ? std::cout << "prev = " << prev->d << std::endl : \
+      std::cout << "prev = " << prev << std::endl;
 
-  if(!(pv->left)) {  // pv doesn't have left subtree, or both.
+  if(!(pv->left)) {  // pv doesn't have a left subtree, or both.
     // pv's link to the right subtree should go to the parent.
     // we're not sure about link to pv (is it prev->left or right?), so need to check
-    std::cout<<"pv has no left subtree\n";
     d < prev->d ? prev->left = pv->right : prev->right = pv->right;
-    std::cout << "prev = " << prev->d << std::endl;
-    prev->left ? std::cout << "prev->left = " << (prev->left)->d << std::endl : std::cout << "prev->left = " << prev->left << std::endl;
-  //  delete prev; delete pv;
+    prev->left ? std::cout << "prev->left = " << (prev->left)->d << \
+        std::endl : std::cout << "prev->left = " << prev->left << std::endl;
   }
-  // TODO: check other branches
-  else if (!(pv->right)) {// левое поддерево есть, а правого нет
-  // тогда ссылка на левое поддерево должна перейти к родителю вместо ссылки на удаляемого
-    d < prev->d ? prev->left = pv->left : prev->right = pv->left;
-    delete prev; delete pv;
+  else if (!(pv->right)) { // pv doesn't have a right subtree, but it has the left one.
+     // pv's link to the left subtree should go to the parent.
+     // we're not sure about link to pv (is it prev->left or right?), so need to check
+     d < prev->d ? prev->left = pv->left : prev->right = pv->left;
+     prev->right ? std::cout << "prev->right = " << (prev->right)->d << \
+         std::endl : std::cout << "not supposed to happen: prev->rigth = " << prev->right << std::endl;
   }
-  else { // оба поддерева в наличии
+  else { // pv has both subtrees. Welcome to hell!
     std::cout << "Both subtrees" << std::endl;
-  }
+    // we need to replace this node with the one, which is most close in value.
+    // it can be the rightest of the left subtree or the leftest of the right subtree.
+    // Step 1. Find it!
+    // Step 2. Memorize its value
+    // Step 3. Delete it (ha-ha)
+    // Step 4. Replace the value
+
+    // Step 1. Find it! Let's go for the rightest of the left subtree.
+    Node *replace = new Node;
+    replace = pv->left;   // A . Remember this.
+    prev = pv;
+    while(replace->right) {
+      prev = replace;
+      replace = replace->right;
+    }
+    // Step 2. Memorize its value
+    int value = replace->d;
+    // Step 3. Delete it.
+    // Yes, I know it's illogical to search for the value again, but come on, it's easier!
+    // del(root, value);
+    // Okay, it was a joke. Let's repeat some strings.
+    // WE DON'T KNOW IF IT IS prev->right OR prev->left!!!! (Look to A.)
+    // But we are sure that replace->right is 0.
+    replace->d < prev->d ? prev->left = replace->left : prev->right = replace->left;
+    delete replace;
+    // Step 4. Replace the value
+    pv->d = value;
+  } // both subtrees
 
 } // void del()
