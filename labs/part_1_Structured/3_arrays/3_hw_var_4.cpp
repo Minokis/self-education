@@ -8,7 +8,7 @@
 
 double sum_odds(double arr[], int n);
 double sum_bw_neg(double *arr, int n);
-//double* zip(double *arr);
+void zip(double *arr, int n);
 
 int main() {
   const int n = 20;
@@ -16,6 +16,10 @@ int main() {
                   0.314, 78.19, 7,   0,     30.195, 8.06, 5.08, 6.2, 19.024, 72  };
   std::cout << "Sum of the odd elements: " << sum_odds(arr, n) << std::endl;
   std::cout << "Computing the sum bw negative elements:\n" << sum_bw_neg(arr, n) << std::endl;
+  std::cout << "Zipping:\n";
+  zip(arr,n);
+  for (int k = 0; k<n; k++) std::cout << arr[k] << ' ';
+  std::cout << "\n";
   return 0;
 }
 
@@ -42,4 +46,20 @@ double sum_bw_neg(double *arr, int n) {
   }
   if(end<0) { std::cout << "Error: there's only one negative element in the array.\nReturning the sum of elements after the first.\n";}
   return result;
+}
+
+void zip(double *arr, int n) {
+  // проще всего - напихать в новый массив и переписать старый по-новому
+  // но можно пропустить пару шагов и сделать один обход вместо двух
+  int j = 0; // счетчик для отслеживания новых элементов
+  for (int i = 0; i < n; i++) {
+    if (abs(arr[i]) >= 1) {
+      arr[j] = arr[i];
+      j++;
+    }
+  }
+  while (j < n) {
+     arr[j] = 0;
+     j++;
+   }
 }
