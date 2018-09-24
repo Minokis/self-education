@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 	}
   //end
 
-  int num = -1; // indicator of the column
+  //int num = -1; // indicator of the column
   bool all_posit; // indicator of the condition
 
   for(j = 0; j < ncol; j++) {
@@ -42,15 +42,19 @@ int main(int argc, char *argv[]) {
         all_posit = false;
         break;
       }
-    if(all_posit) {num = j; break;}
+    if(all_posit) {
+      //num = j; break;
+      cout << "The column with all positive numbers is " << j+1 << endl;
+      return 0;
+    }
   }
-
-  if(num == -1) {
-    cout << "No columns with all positive numbers.\n";
-  }
-  else {
-    cout << "The column with all positive numbers is " << j << endl;
-  }
+  //
+  // if(-1 == num) {
+  //   cout << "No columns with all positive numbers.\n";
+  // }
+  // else {
+  //   cout << "The column with all positive numbers is " << j << endl;
+  // }
+  cout << "No columns with all positive numbers.\n";
   return 0;
-
 }
