@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
                          {2, 1, 2}, \
                          {3, 1, 3}, \
                          {4, 1, 0}, \
-                         {4, 1, 5}, \
+                         {4, 0, 5}, \
                          {4, 2, 5}, \
                          {4, 3, 5}, \
                          {5, 4, 6}, \
@@ -90,8 +90,8 @@ int main(int argc, char *argv[]) {
   cout << "Number of rows with zero is " << rows_with_0 << endl;
 
   // part 2: the longest sequence in the columns
-  // iteration 1: only one sequence in the column,
-  // out of several maximums take the one on the left
+  // iteration 2: only one sequence in the column,
+  // check for the same sequences.
   // bool seq_found;
 	int seq_in_col;
 	int seqs[ncol];
@@ -113,12 +113,18 @@ int main(int argc, char *argv[]) {
 		cout << seqs[j] << ' ';
   cout << endl;
 
+  bool max_found = false;
 	int max_seq_index = 0;
-	for(j = 0; j < ncol; j++)
-		if (seqs[j] > seqs[max_seq_index]) max_seq_index = j;
+	for(j = 0; j < ncol; j++) {
+		if (seqs[j] > seqs[max_seq_index]) { max_seq_index = j; max_found = true; }
+    if (seqs[i] == seqs[max_seq_index]) max_found = false;
+  }
 
-	cout << "The longest sequence is " << seqs[max_seq_index] << ", column " \
+  if(max_found)
+	 cout << "The longest sequence is " << seqs[max_seq_index] << ", column " \
         << max_seq_index + 1 << endl;
+  else
+    cout << "There's no longest sequence.\n";
 
   return 0;
 }
