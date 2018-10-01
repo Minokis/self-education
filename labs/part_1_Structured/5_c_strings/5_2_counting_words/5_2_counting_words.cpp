@@ -25,7 +25,6 @@
 #include <iostream>
 #include <string.h>
 #include <fstream>
-#include <ctype.h>
 
 int main(int argc, char *argv[])
 {
@@ -35,23 +34,20 @@ int main(int argc, char *argv[])
 
   const int len = 81;
   char line[len], word[len];
-  std::cout << "Enter the word: "; std::cin >> word;
-  int l_word = strlen(word);
-  std::cout << "Length: " << l_word << std::endl;
+  char delims[] = " ,.!?/<>|)(*:;\"";
 
+  std::cout << "Enter the word: "; std::cin >> word;
+
+  char *token;
   int count = 0;
   while(input.getline(line, len)) {
-    char *p = line;
-    while( (p = strstr(p, word))) {  // in case of successful match strstr returns a pointer to the substring
-      char *c = p;
-      p += l_word;
-      // Is it a beginning of the line?
-      if (c!=line)
-        // Symbol before is not a separator?
-        if ( !ispunct(*(c-1))  && !isspace(*(c-1)) ) continue;
-        // Symbol after is not a separator?
-      if ( ispunct(*p) || isspace(*p) || (*p == '\0') ) count++;
-
+    // strtok creates address of the first "word" in the line
+    token = strtok( line, delims );
+    //std::cout << "Token: " << token << std::endl;
+    // deliminator after token is transformed into NULL
+    while( token != NULL ) {
+      if( strcmp (token, word) == 0 ) count++;
+      token = strtok( NULL, delims ); // if first arg is NULL, strtok is searching fot the next word in the same line
     }
   }
   std::cout << "Number of matches: " << count << std::endl;
