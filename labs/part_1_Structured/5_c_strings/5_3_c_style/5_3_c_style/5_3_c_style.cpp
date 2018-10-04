@@ -18,26 +18,34 @@
 // 5) Анализируя буфер посимвольно, выделять предложения. (.?!) Как только найден
 // вопросительный знак, вывести предложение.
 
+#include "stdafx.h"
 #include <stdio.h>
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-  if(argc != 2){ puts("Usage: enter the file with strings.\n"); return 1; }
-  FILE *input;
-  input = fopen(argv[1], "r");
-  if( !input ) { puts("Cannot open the file.\n"); return 1; }
-  // Let's measure file size
-  // Go to the end of file:
-  fseek(input, 0, SEEK_END);
-  // Return a position - it is the length
-  long len = ftell(input);
-  printf("Length is %ld\n", len);
-  // // Create a buffer
-  // char *buf = new char[len+1];
-  // input.seekg(0, input.beg);
-  // input.read(buf, len);
+	errno_t err;
+	if(argc != 2){ puts("Usage: enter the file with strings.\n"); return 1; }
+	FILE *input;
+	err = fopen_s(&input, argv[1], "r");
+	if( !input ) { puts("Cannot open the file.\n"); return 1; }
+	
+	// Let's measure file size
+	// Go to the end of file:
+	fseek(input, 0, SEEK_END);
+	
+	// Return a position - it is the length
+	long len = ftell(input);
+	// printf("Length is %ld\n", len);
+	
+	// create a buffer
+	char *buf = new char[len+1];
+	const int l_block = 1024;
+	int num_block = len / l_block + 1;
+  
+	fseek(input, 0, SEEK_SET);
+	fread(buf, );
   // buf[len] = '\0';
   // //cout << "Last character = " << buf[len-2];
   // long n = 0, i = 0, j = 0;
