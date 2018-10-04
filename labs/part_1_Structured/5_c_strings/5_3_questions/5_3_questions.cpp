@@ -44,17 +44,16 @@ int main(int argc, char *argv[])
   long n = 0, i = 0, j = 0;
   while(buf[i]) {
     if(buf[i] == '?') {
-      for (;j==i;j++) cout << buf[j];
-      j = i+1;
+      for (j = n; j <= i; j++) cout << buf[j];
+      n = i + 1;
+      cout << endl;
     }
-    if(buf[i] == '.' || buf[i] == '!'){
-      j = i+1;
-    }
+    if(buf[i] == '.' || buf[i] == '!')  n = i + 1;
     i++;
 
   }
+  input.close();
+  cout << endl;
   cout << "Questions: " << n << endl;
-
-
   return 0;
 }
