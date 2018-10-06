@@ -45,22 +45,21 @@ int main(int argc, char *argv[])
 	int num_block = len / l_block + 1;
   
 	fseek(input, 0, SEEK_SET);
-	fread(buf, );
-  // buf[len] = '\0';
-  // //cout << "Last character = " << buf[len-2];
-  // long n = 0, i = 0, j = 0;
-  // while(buf[i]) {
-  //   if(buf[i] == '?') {
-  //     for (j = n; j <= i; j++) cout << buf[j];
-  //     n = i + 1;
-  //     cout << endl;
-  //   }
-  //   if(buf[i] == '.' || buf[i] == '!')  n = i + 1;
-  //   i++;
-  //
-  // }
-  // input.close();
-  // cout << endl;
-  // cout << "Questions: " << n << endl;
-  // return 0;
+	fread(buf, l_block, num_block, input);
+	buf[len] = '\0';
+    // printf("Last character = %c", buf[len-2]);
+  
+	long n = 0, i = 0, j = 0;
+	while(buf[i]) {
+		if(buf[i] == '?') {
+		   for (j = n; j <= i; j++) putchar(buf[j]);
+		   n = i + 1;
+		   printf("\n");
+		 }
+		 if(buf[i] == '.' || buf[i] == '!')  n = i + 1;
+		 i++;
+	 }
+	 fclose(input);
+	 printf("\n");
+	   return 0;
 }
