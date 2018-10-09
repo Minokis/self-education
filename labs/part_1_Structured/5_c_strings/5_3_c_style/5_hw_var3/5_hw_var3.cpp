@@ -25,7 +25,6 @@
 #include <fstream>
 #include <ctype.h>
 
-
 int main(int argc, char *argv[])
 {
 	setlocale(LC_ALL, "Russian");
@@ -34,25 +33,23 @@ int main(int argc, char *argv[])
 	if (!input) { std::cout << "Cannot open the file.\n"; return 1; }
 
 	const int len = 81;
-	char line[len];
+	char line[len], linecopy[len];
 	int i;
+  char delims[] = " ,.!?/<>|)(*:;\"";
+  char *token;
+
 	while (input.getline(line, len)) {
-		for (i = 0; i < len; i++) {
-			if (line[i] == '\0') break;
-			if ( isdigit(line[i]) ) { // search for digit
-		     if( isdigit(line[i+1]) ) { // is it two-digits?
-          // Beginning of the line
-          if (i!=0)
-          // Symbol before is separator
-            if ( !ispunct(line[i-1]) && !isspace(line[i-1])) continue;
-          // Symbol after is separator
-          if ( ispunct(line[i+2]) || isspace(line[i+2]) || line[i+2] == '\0')
-		       std::cout << line << std::endl;
-		    }
-				}
-      }
+    strcpy(linecopy, line);
+    // strtok creates address of the first "word" in the line
+    token = strtok( line, delims );
+    // deliminator after token is transformed into NULL
+    while( token != NULL ) {
+      if ( isdigit(*token) )  // search for digit
+		     if( isdigit( *(token+1) ) )  std::cout << linecopy << std::endl;
+         token = strtok( NULL, delims ); // if first arg is NULL, strtok is searching fot the next word in the same line
+       }
+  }
 
-			}
 
-    return 0;
+		return 0;
 }
