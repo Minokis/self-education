@@ -57,16 +57,23 @@ int main(int argc, char *argv[])
     for (; beg < l_name; beg++) {
       if ( isalpha(fgetc(input)) ) {
         beg++;
-        fseek(input, -beg, SEEK_CUR);
+        fseek(input, -1, SEEK_CUR);
         break; }
     }
     fgets(dbase[i].name, l_name-beg, input);
-    fscanf(input, "%i%f\n", &dbase[i].birth_year, &dbase[i].pay);
+
+    // A whitespace in format string (e.g. "%i%f ") indicates that fscanf must ignore
+    // all whitespace characters, including newline and possible whitespace
+    // on the next line! I have a check of non-alpha in the beginning of search
+    // line, so I don't need this whitespace here, it'll ruin my character-reading.
+
+    fscanf(input, "%i%f", &dbase[i].birth_year, &dbase[i].pay);
     i++;
     if (i >= l_dbase) { puts("The file is too long. Stopping.\n"); return 1; }
   } // end of file-reading
 
   int n_record = i, n_man = 0;
+  printf("n_rec = %i", i);
   float mean_pay = 0;
 
   //Control output
