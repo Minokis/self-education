@@ -25,6 +25,7 @@
 #include <fstream>
 #include <iostream>
 #include <limits>
+
 //#include <windows.h>
 using namespace std;
 
@@ -53,7 +54,12 @@ int main(int argc, char *argv[])
   int i = 0;
   while( input.getline(buf, l_buf)) {
     if (i >= l_dbase) { cout << "The file is too long. Stopping.\n"; return 1; }
-    strncpy(dbase[i].name, buf, l_name);
+    int beg = 0;
+    for (; beg < l_name; beg++) {
+      if ( isalpha(buf[beg]) ) break;
+    }
+    strncpy(dbase[i].name, buf+beg, l_name-beg);
+
     dbase[i].name[l_name] = '\0';
     dbase[i].birth_year = atoi(&buf[l_name]);
     dbase[i].pay = atof(&buf[l_name + l_year]);
@@ -72,25 +78,31 @@ int main(int argc, char *argv[])
     if ( strcmp(name, "end") == 0 ) break;
 
     bool not_found = true;
+    char low_dbase_name[l_name];
+    char low_name[l_name];
+
     for( i = 0; i < n_record; i++) {
-      if ( strstr( dbase[i].name, name ) )
-        if ( dbase[i].name[strlen(name)] == ' ') { // check if it is a part of namespace
-          strcpy(name, dbase[i].name);
+      for (int ch = 0; ch < l_name; ch++) {
+        low_dbase_name[ch] = tolower( dbase[i].name[ch] );
+        low_name[ch] = tolower( name[ch] );
+      }
+
+      if ( strstr( low_dbase_name, low_name ) )
+        if ( dbase[i].name[strlen(name)] == ' ') { // check if it is a part of name
+          // strcpy(name, dbase[i].name); // ? is it necessary ?
           // CharToOem(name, name);
-          cout << name << dbase[i].birth_year << ' ' << dbase[i].pay << endl;
+          cout << dbase[i].name << dbase[i].birth_year << ' ' << dbase[i].pay << endl;
           n_man++; mean_pay += dbase[i].pay;
           not_found = false;
-        }
-    }
+        } // end of if if ( dbase[i].name[strlen(name)] == ' ') and strstr(lows)
+    } // end of search through records (  for( i = 0; i < n_record; i++)  )
     if(not_found) cout << "No person with this name." << endl;
   }
     if(n_man>0) cout << "Average pay: " << mean_pay / n_man << endl;
     return 0;
 }
 
-//
-// Скорректировать программу: сделать так, чтобы "не мешали" пробельные символы перед фамилией
-// привести все в один регистр tolower(c), toupper(c)
-// адаптировать для русского языка и кодировок ASCII и ANSI (раскомментировать и попробовать)
+
+// адаптировать для русского языка и кодировок ASCII и ANSI (раскомментировать,
+// дописать функции и попробовать)
 // функции для регистров русского языка tolower/toupper
-// вариант с библиотечными функциями ввода-вывода

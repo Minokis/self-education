@@ -1,9 +1,10 @@
-Mcgowan T                     1979 8519.76
-Mayer F                       1938 4985.23
+ Mcgowan T                    1979 8519.76
+mayer F                       1938 4985.23
 Knox D                        1916 5915.72
-Steel A                       1991 2545.82
+SteEl A                       1991 2545.82
 Robertson R                   1836 6473.73
-Poppins M                     1111 7503.83
-Downey R Jr                   1965 36492.25
+    Poppins M                 1111 7503.83
+,Downey R Jr                  1965 36492.25
+Downe K Sr                    1965 36492.25
 Hawking S W                   1942 32647.28
 Anderson A                    1836 5492.98
