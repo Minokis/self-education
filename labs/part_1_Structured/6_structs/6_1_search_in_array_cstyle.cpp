@@ -33,7 +33,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
   if(argc != 2) { puts("Usage: enter the file with HR data.\n"); return 1; }
-  const int l_name = 30, l_year = 5, l_pay = 10, l_buf = l_name+l_year+l_pay;
+  const int l_name = 30;
 
   struct Man {
     char name[l_name + 1];
@@ -43,9 +43,7 @@ int main(int argc, char *argv[])
   const int l_dbase = 100;
   Man dbase[l_dbase];
 
-
   char name[l_name + 1];
-  char buf[l_buf + 1];
 
   FILE *input;
   if( (input = fopen(argv[1], "r")) == NULL ) { puts("Cannot open the file.\n"); return 1; }
