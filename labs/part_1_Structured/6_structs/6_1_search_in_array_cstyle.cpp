@@ -23,7 +23,7 @@
 // - вывод информации о сотруднике / сбщ об ошибке
 // 3. Вывести средний оклад
 
-#include <limits>
+
 #include <string>
 #include <stdio.h>
 
@@ -61,6 +61,7 @@ int main(int argc, char *argv[])
         break; }
     }
     fgets(dbase[i].name, l_name-beg, input);
+    if ( strlen(dbase[i].name) == 0) continue;
 
     // A whitespace in format string (e.g. "%i%f ") indicates that fscanf must ignore
     // all whitespace characters, including newline and possible whitespace
@@ -73,7 +74,7 @@ int main(int argc, char *argv[])
   } // end of file-reading
 
   int n_record = i, n_man = 0;
-  printf("n_rec = %i", i);
+  printf("n_rec = %i\n", i);
   float mean_pay = 0;
 
   //Control output
@@ -81,39 +82,37 @@ int main(int argc, char *argv[])
     printf("%s\t%i\t%f\n", dbase[c].name, dbase[c].birth_year, dbase[c].pay);
   }
 
+   while(true) {
+     puts("Enter a name or push \"Enter\" to stop: ");
+     // OemToChar(name, name);
+     fgets(name, l_name+1, stdin);
+     name[strcspn(name, "\n")] = '\0';
+     //gets(name);
+     printf("You entered: %s\n", name);
+     if ( strlen(name) == 0 ) break;
 
-  //
-  // while(true) {
-  //   cout << "Enter a name or a word \"end\": ";
-  //   // OemToChar(name, name);
-  //   cin.get(name, l_name+1);
-  //   cin.clear();
-  //   cin.ignore( numeric_limits<streamsize>::max(), '\n');
-  //
-  //   if ( strcmp(name, "end") == 0 ) break;
-  //
-  //   bool not_found = true;
-  //   char low_dbase_name[l_name];
-  //   char low_name[l_name];
-  //
-  //   for( i = 0; i < n_record; i++) {
-  //     for (int ch = 0; ch < l_name; ch++) {
-  //       low_dbase_name[ch] = tolower( dbase[i].name[ch] );
-  //       low_name[ch] = tolower( name[ch] );
-  //     }
-  //
-  //     if ( strstr( low_dbase_name, low_name ) )
-  //       if ( dbase[i].name[strlen(name)] == ' ') { // check if it is a part of name
-  //         // strcpy(name, dbase[i].name); // ? is it necessary ?
-  //         // CharToOem(name, name);
-  //         cout << dbase[i].name << dbase[i].birth_year << ' ' << dbase[i].pay << endl;
-  //         n_man++; mean_pay += dbase[i].pay;
-  //         not_found = false;
-  //       } // end of if if ( dbase[i].name[strlen(name)] == ' ') and strstr(lows)
-  //   } // end of search through records (  for( i = 0; i < n_record; i++)  )
-  //   if(not_found) cout << "No person with this name." << endl;
-  // }
-  //   if(n_man>0) cout << "Average pay: " << mean_pay / n_man << endl;
+    bool not_found = true;
+    char low_dbase_name[l_name];
+    char low_name[l_name];
+
+    for( i = 0; i < n_record; i++) {
+      for (int ch = 0; ch < l_name; ch++) {
+        low_dbase_name[ch] = tolower( dbase[i].name[ch] );
+        low_name[ch] = tolower( name[ch] );
+      }
+
+      if ( strstr( low_dbase_name, low_name ) )
+        if ( dbase[i].name[strlen(name)] == ' ') { // check if it is a part of name
+          // strcpy(name, dbase[i].name); // ? is it necessary ?
+          // CharToOem(name, name);
+          printf("%s %i %f\n", dbase[i].name, dbase[i].birth_year, dbase[i].pay);
+          n_man++; mean_pay += dbase[i].pay;
+          not_found = false;
+        } // end of if if ( dbase[i].name[strlen(name)] == ' ') and strstr(lows)
+    } // end of search through records (  for( i = 0; i < n_record; i++)  )
+     if(not_found) puts("No person with this name.");
+   }
+     if(n_man>0) printf("Average pay: %f\n", mean_pay / n_man);
     return 0;
 }
 
