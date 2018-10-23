@@ -53,6 +53,7 @@ int main(int argc, char *argv[])
   // Reading from a file
   int i = 0;
   while( input.getline(buf, l_buf)) {
+    if(strlen(buf) == 0) {cout << "Empty line\n"; continue;}
     if (i >= l_dbase) { cout << "The file is too long. Stopping.\n"; return 1; }
     int beg = 0;
     for (; beg < l_name; beg++) {
@@ -66,6 +67,7 @@ int main(int argc, char *argv[])
     i++;
   }
   int n_record = i, n_man = 0;
+  cout << "n_rec: " << n_record << endl;
   float mean_pay = 0;
 
   while(true) {
