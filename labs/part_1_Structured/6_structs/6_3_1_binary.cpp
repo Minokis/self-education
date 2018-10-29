@@ -31,31 +31,33 @@ int main(int argc, char *argv[])
   }
 
   // Reading from a file
-
+  int i;
   while( !feof(input) ) {
     int beg = 0;
-    for (; beg < l_name; beg++) {
+    for (; beg <= l_name; beg++) {
       if ( isalpha(fgetc(input)) ) {
-        beg++;
         fseek(input, -1, SEEK_CUR);
+        if (0 != beg) beg++;
         break; }
     }
     fgets(man.name, l_name-beg, input);
-    if ( strlen(man.name) == 0) {puts("empty name!");continue;}
+    //printf("Name is %s, beg is %i\n", man.name, beg);
+    if ( strlen(man.name) == 0 || beg > l_name) {puts("Found empty name!");continue;}
+    man.name[0] = toupper(man.name[0]);
 
     // A whitespace in format string (e.g. "%i%f ") indicates that fscanf must ignore
     // all whitespace characters, including newline and possible whitespace
     // on the next line! I have a check of non-alpha in the beginning of search
     // line, so I don't need this whitespace here, it'll ruin my character-reading.
 
-    fscanf(input, "%i%f ", &man.birth_year, &man.pay);
+    fscanf(input, "%i%f", &man.birth_year, &man.pay);
     // Control print
     printf("%s\t%i\t%f\n", man.name, man.birth_year, man.pay);
     fwrite(&man, sizeof(man), 1, output);
   } // end of file-reading
-
-  fclose(output);
-  puts("Binary file is recorded.\n");
+  //
+   fclose(output);
+   puts("Binary file is recorded.\n");
 
   return 0;
 }

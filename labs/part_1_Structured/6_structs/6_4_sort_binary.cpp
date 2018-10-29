@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
   fread(man, sizeof(Man), n_record, fin);
   fclose(fin);
 
-  qsort(man, n_record, sizeof(Man), compare_pay);
+  qsort(man, n_record, sizeof(Man), compare_birth);
 
   for (int i = 0; i < n_record; i++) {
     printf("%s %5i %10.2f\n", man[i].name, man[i].birth_year, \
@@ -56,12 +56,3 @@ int compare_pay(const void *man1, const void *man2) {
   return ((Man*)man1)->pay > ((Man*)man2)->pay ? -1 : \
   ((Man*)man1)->pay == ((Man*)man2)->pay ? 0 : 1;
 }
-
-/* Bugs:
-1) If compare_names, mayer is in the end, because it starts with lowercase letter.
-2) Steel and Downey have wrong names and years (symbols shifted)
-
-Solution: binary file mast be "cleaned": no extra whitespace, names are fixed: everything lowercase,
-but first letter and initials
-
-*/
