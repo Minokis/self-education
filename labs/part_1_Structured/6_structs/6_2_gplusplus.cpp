@@ -1,3 +1,4 @@
+// Программа упорядочивает файл из 6_1 по году рождения сотрудников
 #include <fstream>
 #include <iostream>
 #include <limits>
@@ -43,7 +44,7 @@ int main(int argc, char *argv[])
 	}
 	int n_record = i;
 	input.close();
-	ofstream fout("dbase.txt");
+	ofstream fout("dbase_6_2.txt");
 	if (!fout) { cout << "Cannot open the output file.\n"; return 1; }
 
 	// Control output
