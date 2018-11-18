@@ -13,22 +13,25 @@
 #include "stdafx.h"
 #include <stdio.h>
 #include <string>
-#include <ctime>
+#include <stdlib.h> // for qsort
 
 using namespace std;
 
+int compare_time(const void *train1, const void *train2);
+
+const int l_dest = 41;
+const int l_num = 5; // номер воспринимается не как число, а как строка, которая может начинаться с нуля; 
+const int l_time = 6;
+
+struct TRAIN {
+	char destination[l_dest];
+	char number[l_num];
+	int departure_time;
+};
+
 int main() {
-	const int l_dest = 41;
-	const int l_num = 5; // номер воспринимается не как число, а как строка, которая может начинаться с нуля; 
-	const int l_time = 6;
 
-	struct TRAIN {
-		char destination[l_dest];
-		char number[l_num];
-		int departure_time;
-	};
-
-	const int l_dbase = 3;
+	const int l_dbase = 6;
 	TRAIN dbase[l_dbase];
 
 	// universal counter i
@@ -81,28 +84,50 @@ int main() {
 		if (mm < 0 || mm > 59) { puts("Invalid minutes. Skipping.\n"); i--; continue; }
 		dbase[i].departure_time = hh * 60 + mm;
 
-		// TODO: заполнить нулями слева, если число < 10 для времени
-		printf("You entered: train %i, dest = %s, num = %s, time = %i:%i\n", i, dbase[i].destination, dbase[i].number, hh, mm);
-		//printf("You entered: train %i, dest = %s, num = %s, \n", i, dbase[i].destination, dbase[i].number);
-		/*int hh = atoi(dbase[i].departure_time);
-		printf("Hours: %i", hh);
-		int mm = atoi(&dbase[i].departure_time[3]);
-		printf("Minutes: %i", mm);*/
+		// Для вывода времени поле заполняется нулями слева, если число < 10 
+		printf("You entered: train %i, dest = %s, num = %s, time = %.2i:%.2i\n", i, dbase[i].destination, dbase[i].number, hh, mm);
+		
 
 
 		//TODO: время лучше будем хранить числом (scanf hh, mm), затем time=hh*60+mm
 		// обратно hh = time/60, mm = time%60
 		// можно непосредственно сравнивать между собой по числу минут
 		// сортировка (можно qsort попробовать снова)
-		// поиск по destination
-		//  bool not_found = 1;
-		// for (int i = 0; i< l_dbase; i++) {
-		//   if (strstr(dbase[i].destination, str) == 0) {
-		//    printf(<...>); not_found = 0;}
-		// }
-		// if(not_found) puts("Not found.\n");
+		
 	}
+	qsort(dbase, l_dbase, sizeof(TRAIN), compare_time);
+	for (i = 0; i < l_dbase; i++) {
+		printf("train %i, dest = %s, num = %s, time = %.2i:%.2i\n", i, dbase[i].destination, dbase[i].number, dbase[i].departure_time/60, dbase[i].departure_time%60);
+	}
+
+	// Search by destination
+	while (true) {
+		puts("Enter destination to start the search! or push \"Enter\" to stop: ");
+		char dest[l_dest];
+		fgets(dest, l_dest, stdin);
+		if (p = strchr(dest, '\n')) { // check newline in the read string
+			*p = '\0';
+		}
+		else {
+			scanf_s("%*[^\n]"); scanf_s("%*c"); // clear up to newline
+		}
+		if (strlen(dest) == 0) break;
+		bool not_found = 1;
+		for (i = 0; i < l_dbase; i++) {
+			if (strstr(dbase[i].destination, dest) != 0) {
+				printf("It's the train number %i!\n", i);
+				printf("train %i, dest = %s, num = %s, time = %.2i:%.2i\n", i, dbase[i].destination, dbase[i].number, dbase[i].departure_time / 60, dbase[i].departure_time % 60); not_found = 0;
+			}
+		}
+		if (not_found) puts("Not found.\n");
+	}
+
+	 p = nullptr;
 	return 0;
 
 }
 
+int compare_time(const void *train1, const void *train2) {
+	return (reinterpret_cast <const TRAIN*>(train1))->departure_time > (reinterpret_cast <const TRAIN*>(train2))->departure_time ? 1 :
+		(reinterpret_cast <const TRAIN*>(train1))->departure_time < (reinterpret_cast <const TRAIN*>(train2))->departure_time ? -1 : 0;
+}
