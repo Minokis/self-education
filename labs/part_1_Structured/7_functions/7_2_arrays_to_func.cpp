@@ -31,8 +31,11 @@ int main(int argc, char *argv[]) {
   //   cout << b[i] << ' ';
   // }
   // cout << endl;
-  n_posit(a, n) > n_posit(b, n) ? cout << "First array has more positive elements.\n" : \
-    n_posit(a, n) < n_posit(b, n) ? cout << "Second array has more positive elements.\n" : \
+  int n_pos_a = n_posit(a,n);
+  int n_pos_b = n_posit(b,n);
+
+  n_pos_a > n_pos_b ? cout << "First array has more positive elements.\n" : \
+    n_pos_a < n_pos_b ? cout << "Second array has more positive elements.\n" : \
     cout << "Arrays have the same number of positive elements.\n";
 
   return 0;
