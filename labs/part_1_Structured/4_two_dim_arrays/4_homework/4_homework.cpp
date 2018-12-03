@@ -94,8 +94,12 @@ int main(int argc, char *argv[]) {
 
 	// part 2: the longest sequence in the columns
  // iteration 3: there can be several sequences in one column
+
+	// array for sequences - we need it to find the index of a column with the longest sequence
 	int seqs[ncol];
+	// special array for SEVERAL sequences in one column j
 	int seqs_in_j[nrow / 2];
+	// counter for this special array
 	int s;
 	bool onseq;
 	int max_seq_in_j_index;
@@ -108,21 +112,23 @@ int main(int argc, char *argv[]) {
 
 		for (i = 1; i < nrow; i++) {
 			if (arr[i - 1][j] == arr[i][j]) {
+				// sequence detected
 				onseq = true;
 				seqs_in_j[s] += 1;
 			}
-			else {
-				if (onseq) {
+			else { 
+				if (onseq) { // sequence is ended
 					s += 1;
 					seqs_in_j[s] = 1;
 					onseq = false;
 				}
 			}
 		}
+		// what sequence is the longest in one column?
 		max_seq_in_j_index = 0;
 		for (int k = 0; k <= s; k++)
 			if (seqs_in_j[k]>seqs_in_j[max_seq_in_j_index]) max_seq_in_j_index = k;
-
+		// let's write it in the array of sequences
 		seqs[j] = seqs_in_j[max_seq_in_j_index];
 	}
 
